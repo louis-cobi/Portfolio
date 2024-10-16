@@ -136,7 +136,7 @@ function App() {
                         >
                             <h1 className="flex ">hello </h1>
                             <View className="flex z-[2]  aspect-square fixed rounded-t-md h-[500px]">
-                                <Item4 scrollY={scrollY}/>
+                                <Item4 />
                             </View>
                         </div>
                     </div>
