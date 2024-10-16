@@ -5,7 +5,7 @@ import { useRef } from "react";
 import * as THREE from "three";
 import { CustomMaterial } from "./material";
 
-export const Item4 = () => {
+export const Item4 = ({ scrollY = 0 }) => {
   const ring1Ref = useRef<THREE.Mesh>(null);
   const ring2Ref = useRef<THREE.Mesh>(null);
   const cone1Ref = useRef<THREE.Mesh>(null);
@@ -58,7 +58,7 @@ export const Item4 = () => {
     }
   }, []);
   return (
-    <Center ref={groupRef}>
+    <Center ref={groupRef} position={[0, scrollY, 0]}>
       <mesh ref={ring1Ref}>
         <torusGeometry args={[2.1, 0.1]}></torusGeometry>
         <CustomMaterial></CustomMaterial>

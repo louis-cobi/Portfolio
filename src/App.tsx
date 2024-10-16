@@ -1,6 +1,7 @@
 import { View } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
-import { ReactNode, useEffect } from "react"
+import { ReactNode, useEffect, useRef, useState } from "react"
+import { useLenis } from "lenis/react";
 //import { Hero } from "./components/Hero";
 import { Item1 } from "./grid/Item1"
 import { Item10 } from "./grid/Item10"
@@ -15,45 +16,58 @@ import { Item7 } from "./grid/Item7"
 import { Item8 } from "./grid/Item8"
 import { Item9 } from "./grid/Item9"
 
-const Wrapper = ({ name, children }: { name: string; children: ReactNode }) => {
-    return (
-        <div className="relative rounded-md cursor-pointer bg-white/10 card p-[1px]">
-            <View className="flex z-[2] bg-[#171717]  aspect-square  relative rounded-t-md">
-                {children}
-            </View>
+// const Wrapper = ({ name, children }: { name: string; children: ReactNode }) => {
+//     return (
+//         <div className="relative rounded-md cursor-pointer bg-white/10 card p-[1px]">
+//             <View className="flex z-[2] bg-[#171717]  aspect-square  relative rounded-t-md">
+//                 {children}
+//             </View>
 
-            <div className="relative z-20 flex items-center mt-[1px] justify-between  w-full px-4 py-2 bg-[#171717] rounded-b-md">
-                <span className="w-1 h-1 rounded-full bg-white/20"></span>
-                <span className="">{name}</span>
-                <span className="w-1 h-1 rounded-full bg-white/20"></span>
-            </div>
+//             <div className="relative z-20 flex items-center mt-[1px] justify-between  w-full px-4 py-2 bg-[#171717] rounded-b-md">
+//                 <span className="w-1 h-1 rounded-full bg-white/20"></span>
+//                 <span className="">{name}</span>
+//                 <span className="w-1 h-1 rounded-full bg-white/20"></span>
+//             </div>
 
-            <div
-                className="absolute top-0 left-0 w-full h-full transition-opacity duration-500 rounded-md opacity-0 group-hover:opacity-100 z-1"
-                style={{
-                    background: `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y),rgba(255, 255, 255, 0.3),transparent 40%)`,
-                }}
-            ></div>
-        </div>
-    )
-}
+//             <div
+//                 className="absolute top-0 left-0 w-full h-full transition-opacity duration-500 rounded-md opacity-0 group-hover:opacity-100 z-1"
+//                 style={{
+//                     background: `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y),rgba(255, 255, 255, 0.3),transparent 40%)`,
+//                 }}
+//             ></div>
+//         </div>
+//     )
+// }
 
 function App() {
-    const items = [
-        { component: Item1, name: "Rings" },
-        { component: Item2, name: "Loop" },
-        { component: Item3, name: "Coins" },
-        { component: Item4, name: "Core" },
-        { component: Item5, name: "Rubik" },
-        { component: Item6, name: "Travel" },
-        { component: Item7, name: "Stagger" },
-        { component: Item8, name: "Balance" },
-        { component: Item9, name: "Pulse" },
-        { component: Item10, name: "Pie" },
-        { component: Item11, name: "Newton's Cradle" },
-        { component: Item12, name: "Arrows" },
-    ]
+    // const items = [
+    //     { component: Item1, name: "Rings" },
+    //     { component: Item2, name: "Loop" },
+    //     { component: Item3, name: "Coins" },
+    //     { component: Item4, name: "Core" },
+    //     { component: Item5, name: "Rubik" },
+    //     { component: Item6, name: "Travel" },
+    //     { component: Item7, name: "Stagger" },
+    //     { component: Item8, name: "Balance" },
+    //     { component: Item9, name: "Pulse" },
+    //     { component: Item10, name: "Pie" },
+    //     { component: Item11, name: "Newton's Cradle" },
+    //     { component: Item12, name: "Arrows" },
+    // ]
+    const [scrollY, setScrollY] = useState(0)
+    const lenis = useLenis()
+    const item4Ref = useRef(null)
     useEffect(() => {
+
+        if (!lenis) return
+
+        const handleScroll = (scrollInfo: { scroll: number }) => {
+            setScrollY(scrollInfo.scroll * -0.001) // Ajustez ce multiplicateur pour contrôler la vitesse de déplacement
+        }
+
+        lenis.on('scroll', handleScroll)
+
+
         const cards = document.querySelectorAll<HTMLDivElement>(".card")
 
         const handlePointerMove = (e: PointerEvent) => {
@@ -72,11 +86,12 @@ function App() {
             ?.addEventListener("pointermove", handlePointerMove)
 
         return () => {
+            lenis.off('scroll', handleScroll)
             document
                 .querySelector<HTMLDivElement>("[data-gird]")
                 ?.removeEventListener("pointermove", handlePointerMove)
         }
-    }, [])
+    }, [lenis])
 
     /* return (
     <div className="min-h-screen text-white bg-[#0c0c0c] select-none background">
@@ -116,13 +131,12 @@ function App() {
                 <div className="container p-5 pb-20 mx-auto ">
                     <div className="relative mt-5 overflow-hidden">
                         <div
-                            className="grid h-full gap-5 overflow-hidden group grid-clos-1 md:grid-cols-2 lg:grid-cols-4"
+                            className="grid h-[5000px] gap-5 overflow-hidden group grid-clos-1 md:grid-cols-2 lg:grid-cols-4"
                             data-gird
                         >
                             <h1 className="flex ">hello </h1>
-                            <View className="flex z-[2]  aspect-square  relative rounded-t-md">
-                                <Item4 />
-                                <item.component />
+                            <View className="flex z-[2]  aspect-square fixed rounded-t-md h-[500px]">
+                                <Item4 scrollY={scrollY}/>
                             </View>
                         </div>
                     </div>
