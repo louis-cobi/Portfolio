@@ -70,33 +70,46 @@ export const Item4 = () => {
   useScroll(({ scroll }) => {
     if (!groupRef.current) return;
 
-    const current = thresholds.findIndex((v) => scroll < v) - 1;
-    const start = thresholds[current];
-    const end = thresholds[current + 1];
-    const progress = mapRange(start, end, scroll, 0, 1);
+    const scrollProgress = scroll / (document.documentElement.scrollHeight - window.innerHeight);
+    const currentStep = Math.floor(scrollProgress * (item4Steps.length - 1));
+    const stepProgress = (scrollProgress * (item4Steps.length - 1)) % 1;
 
-    const from = item4Steps[current];
-    const to = item4Steps[current + 1];
+    const from = item4Steps[currentStep];
+    const to = item4Steps[Math.min(currentStep + 1, item4Steps.length - 1)];
 
-    if (!to) return;
-
-    const _scale = mapRange(0, 1, progress, from.scale, to.scale);
-    const _position = new THREE.Vector3(
-      viewport.width * mapRange(0, 1, progress, from.position.x, to.position.x),
-      viewport.height * mapRange(0, 1, progress, from.position.y, to.position.y),
-      mapRange(0, 1, progress, from.position.z, to.position.z)
-    );
-    const _rotation = new THREE.Euler(
-      mapRange(0, 1, progress, from.rotation.x, to.rotation.x),
-      mapRange(0, 1, progress, from.rotation.y, to.rotation.y),
-      mapRange(0, 1, progress, from.rotation.z, to.rotation.z)
+    const _scale = THREE.MathUtils.lerp(from.scale, to.scale, stepProgress);
+    const _position = new THREE.Vector3().lerpVectors(from.position, to.position, stepProgress);
+    const _rotation = new THREE.Euler().setFromVector3(
+      new THREE.Vector3().lerpVectors(
+        new THREE.Vector3(from.rotation.x, from.rotation.y, from.rotation.z),
+        new THREE.Vector3(to.rotation.x, to.rotation.y, to.rotation.z),
+        stepProgress
+      )
     );
 
-    groupRef.current.scale.setScalar(viewport.height * _scale);
-    groupRef.current.position.copy(_position);
-    groupRef.current.rotation.copy(_rotation);
+    gsap.to(groupRef.current.scale, { 
+      x: viewport.height * _scale, 
+      y: viewport.height * _scale, 
+      z: viewport.height * _scale, 
+      overwrite: "auto", 
+      duration: 0.1 
+    });
+    gsap.to(groupRef.current.position, { 
+      x: _position.x, 
+      y: _position.y, 
+      z: _position.z, 
+      overwrite: "auto", 
+      duration: 0.1 
+    });
+    gsap.to(groupRef.current.rotation, { 
+      x: _rotation.x, 
+      y: _rotation.y, 
+      z: _rotation.z, 
+      overwrite: "auto", 
+      duration: 0.1 
+    });
 
-    setCurrentStep(current);
+    setCurrentStep(currentStep);
   });
 
   return (
