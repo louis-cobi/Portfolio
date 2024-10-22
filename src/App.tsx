@@ -44,8 +44,11 @@ function App() {
 
     const item = { component: Item4 }
     return (
-        <div>
+        <div className="background">
             <div className="min-h-screen text-white bg-[#0c0c0c] select-none background">
+                <View className="flex z-[1] fixed rounded-t-md h-dvh w-dvw">
+                    <Item4 />
+                </View>
                 <div className="container p-5 pb-20 mx-auto ">
                     <div className="relative mt-5 overflow-hidden">
                         <div
@@ -53,9 +56,6 @@ function App() {
                             data-gird
                         >
                             <h1 className="flex ">hello </h1>
-                            <View className="flex z-[2]  aspect-square fixed rounded-t-md h-[500px]">
-                                <Item4 />
-                            </View>
                         </div>
                     </div>
                 </div>
