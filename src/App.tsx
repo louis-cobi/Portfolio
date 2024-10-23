@@ -6,7 +6,7 @@ import { Item4 } from "./grid/Item4"
 import { useStore } from "./store/useStore"
 import Lenis from 'lenis'
 import Cards from "./components/card"
-
+import Marquee from "./components/marquee"
 
 function App() {
     const setLenis = useStore((state) => state.setLenis)
@@ -61,8 +61,9 @@ function App() {
                     </div>
                 </div>
             </div>
-            <><Cards /></>
-
+            <Cards />
+            <Marquee />
+            <Marquee isReversed={true} tool={true} />
             <div className="relative rounded-md cursor-pointer bg-white/10 card p-[1px]">
                 <View className="flex z-[2] bg-[#171717]  aspect-square  relative rounded-t-md">
                     <Item4 />

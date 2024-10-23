@@ -1,7 +1,7 @@
 /* From Uiverse.io by EmmaxPlay */
 .card {
     margin: 0 auto;
-    background-color: #011522;
+    background-color: #191a1a;
     border-radius: 8px;
     z-index: 1;
     color: white;
@@ -42,8 +42,8 @@
 .content--sticky {
 	width: 100vw;
 	position: sticky;
-	top: 10vh;
-	--offset: 10vh;
+	top: 10dvh;
+	--offset: 10dvh;
 	top: var(--offset);
 	height: calc(100vh - var(--offset));
 }
