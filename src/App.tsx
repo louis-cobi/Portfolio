@@ -5,6 +5,7 @@ import { useLenis } from "lenis/react";
 import { Item4 } from "./grid/Item4"
 import { useStore } from "./store/useStore"
 import Lenis from 'lenis'
+import Cards from "./components/card"
 
 
 function App() {
@@ -52,7 +53,7 @@ function App() {
                 <div className="container p-5 pb-20 mx-auto ">
                     <div className="relative mt-5 overflow-hidden">
                         <div
-                            className="grid h-[5000px] gap-5 overflow-hidden group grid-clos-1 md:grid-cols-2 lg:grid-cols-4"
+                            className="grid h-dvh gap-5 overflow-hidden group grid-clos-1 md:grid-cols-2 lg:grid-cols-4"
                             data-gird
                         >
                             <h1 className="flex ">hello </h1>
@@ -60,6 +61,8 @@ function App() {
                     </div>
                 </div>
             </div>
+            <><Cards /></>
+
             <div className="relative rounded-md cursor-pointer bg-white/10 card p-[1px]">
                 <View className="flex z-[2] bg-[#171717]  aspect-square  relative rounded-t-md">
                     <Item4 />
