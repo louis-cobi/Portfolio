@@ -7,6 +7,7 @@ import { useStore } from "./store/useStore"
 import Lenis from 'lenis'
 import Cards from "./components/card"
 import Marquee from "./components/marquee"
+import Hero from "./components/hero"
 
 function App() {
     const setLenis = useStore((state) => state.setLenis)
@@ -46,17 +47,19 @@ function App() {
     const item = { component: Item4 }
     return (
         <div className="background">
+
             <div className="min-h-screen text-white bg-[#0c0c0c] select-none background">
                 <View className="flex z-[1] fixed rounded-t-md h-dvh w-dvw">
                     <Item4 />
                 </View>
+                <Hero />
                 <div className="container p-5 pb-20 mx-auto ">
                     <div className="relative mt-5 overflow-hidden">
                         <div
                             className="grid h-dvh gap-5 overflow-hidden group grid-clos-1 md:grid-cols-2 lg:grid-cols-4"
                             data-gird
                         >
-                            <h1 className="flex ">hello </h1>
+                            <h1 className="flex ">Work in progress </h1>
                         </div>
                     </div>
                 </div>
@@ -77,7 +80,7 @@ function App() {
                 </View>
             </div>
 
-            <div className="fixed top-0 left-0 z-20 w-full h-screen pointer-events-none ">
+            <div className="fixed top-0 left-0 w-full h-screen ">
                 <Canvas
                     camera={{
                         zoom: 0.8,
