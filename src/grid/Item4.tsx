@@ -2,13 +2,17 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import { useScroll } from "../hooks/use-scroll";
-import { item4Steps } from "../constants/item4Steps";
+// import { item4Steps, item4StepsMobile } from "../constants/item4Steps";
+import { useIsMobile } from "../hooks/use-isMobile";
+import { getItem4Steps } from "../constants/item4Steps";
 import { mapRange } from "../utils/math";
 import { CustomMaterial } from "./material";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 export const Item4 = () => {
+  const isMobile = useIsMobile()
+  const steps = getItem4Steps(isMobile)
   const { viewport } = useThree();
   const groupRef = useRef<THREE.Group>(null);
   const [currentStep, setCurrentStep] = useState(0);
@@ -71,11 +75,11 @@ export const Item4 = () => {
     if (!groupRef.current) return;
 
     const scrollProgress = scroll / (document.documentElement.scrollHeight - window.innerHeight);
-    const currentStep = Math.floor(scrollProgress * (item4Steps.length - 1));
-    const stepProgress = (scrollProgress * (item4Steps.length - 1)) % 1;
+    const currentStep = Math.floor(scrollProgress * (steps.length - 1));
+    const stepProgress = (scrollProgress * (steps.length - 1)) % 1;
 
-    const from = item4Steps[currentStep];
-    const to = item4Steps[Math.min(currentStep + 1, item4Steps.length - 1)];
+    const from = steps[currentStep];
+    const to = steps[Math.min(currentStep + 1, steps.length - 1)];
 
     const _scale = THREE.MathUtils.lerp(from.scale, to.scale, stepProgress);
     const _position = new THREE.Vector3().lerpVectors(from.position, to.position, stepProgress);

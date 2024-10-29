@@ -80,10 +80,10 @@ function App() {
                 </View>
             </div>
 
-            <div className="fixed top-0 left-0 w-full h-screen ">
+            <div className="fixed top-0 left-0 w-dvw h-dvh ">
                 <Canvas
                     camera={{
-                        zoom: 0.8,
+                        zoom: 1,
                     }}
                     className="fixed"
                     eventSource={document.getElementById("root")!}
