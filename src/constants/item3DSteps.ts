@@ -6,7 +6,7 @@ export interface Step {
   scale: number
 }
 
-export const item4StepsDesktop: Step[] = [
+export const item3DStepsDesktop: Step[] = [
   {
     position: new Vector3(0, 0, 2.5),
     rotation: new Euler(0, Math.PI * 0.15, 0),
@@ -34,7 +34,7 @@ export const item4StepsDesktop: Step[] = [
   },
 ]
 
-export const item4StepsMobile: Step[] = [
+export const item3DStepsMobile: Step[] = [
   {
     position: new Vector3(0, 0, 1.5), // Position plus proche pour mobile
     rotation: new Euler(0, Math.PI * 0.15, 0),
@@ -63,6 +63,6 @@ export const item4StepsMobile: Step[] = [
 ]
 
 // Fonction utilitaire pour obtenir les steps en fonction de la taille d'écran
-export const getItem4Steps = (isMobile: boolean): Step[] => {
-  return isMobile ? item4StepsMobile : item4StepsDesktop
+export const getitem3DSteps = (isMobile: boolean): Step[] => {
+  return isMobile ? item3DStepsMobile : item3DStepsDesktop
 }

@@ -2,7 +2,7 @@ import { View } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import { ReactNode, useEffect, useRef, useState } from "react"
 import { useLenis } from "lenis/react";
-import { Item4 } from "./grid/Item4"
+import { Item3D } from "./threeItem/Item3D";
 import { useStore } from "./store/useStore"
 import Lenis from 'lenis'
 import Cards from "./components/card"
@@ -44,13 +44,13 @@ function App() {
         }
     }, [setLenis])
 
-    const item = { component: Item4 }
+    const item = { component: Item3D }
     return (
         <div className="background">
 
             <div className="min-h-screen text-white bg-[#0c0c0c] select-none background">
                 <View className="flex z-[1] fixed rounded-t-md h-dvh w-dvw">
-                    <Item4 />
+                    <Item3D />
                 </View>
                 <Hero />
                 <div className="container p-5 pb-20 mx-auto ">
@@ -69,13 +69,13 @@ function App() {
             <Marquee isReversed={true} tool={true} />
             <div className="relative rounded-md cursor-pointer bg-white/10 card p-[1px]">
                 <View className="flex z-[2] bg-[#171717]  aspect-square  relative rounded-t-md">
-                    <Item4 />
+                    <Item3D />
                     <item.component />
                 </View>
             </div>
             <div className="relative rounded-md cursor-pointer bg-white/10 card p-[1px]">
                 <View className="flex z-[2] bg-[#171717]  aspect-square  relative rounded-t-md">
-                    <Item4 />
+                    <Item3D />
                     <item.component />
                 </View>
             </div>

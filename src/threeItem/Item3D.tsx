@@ -2,17 +2,17 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import { useScroll } from "../hooks/use-scroll";
-// import { item4Steps, item4StepsMobile } from "../constants/item4Steps";
+// import { item3DSteps, item3DStepsMobile } from "../constants/item3DSteps";
 import { useIsMobile } from "../hooks/use-isMobile";
-import { getItem4Steps } from "../constants/item4Steps";
+import { getitem3DSteps } from "../constants/item3DSteps";
 import { mapRange } from "../utils/math";
 import { CustomMaterial } from "./material";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
-export const Item4 = () => {
+export const Item3D = () => {
   const isMobile = useIsMobile()
-  const steps = getItem4Steps(isMobile)
+  const steps = getitem3DSteps(isMobile)
   const { viewport } = useThree();
   const groupRef = useRef<THREE.Group>(null);
   const [currentStep, setCurrentStep] = useState(0);
