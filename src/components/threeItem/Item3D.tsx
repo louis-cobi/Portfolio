@@ -1,11 +1,11 @@
 import { useFrame, useThree } from "@react-three/fiber";
 import { useMemo, useRef, useState } from "react";
 import * as THREE from "three";
-import { useScroll } from "../hooks/use-scroll";
+import { useScroll } from "../../hooks/use-scroll";
 // import { item3DSteps, item3DStepsMobile } from "../constants/item3DSteps";
-import { useIsMobile } from "../hooks/use-isMobile";
-import { getitem3DSteps } from "../constants/item3DSteps";
-import { mapRange } from "../utils/math";
+import { useIsMobile } from "../../hooks/use-isMobile";
+import { getitem3DSteps } from "../../constants/item3DSteps";
+import { mapRange } from "../../utils/math";
 import { CustomMaterial } from "./material";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";

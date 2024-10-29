@@ -2,7 +2,7 @@ import { View } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import { ReactNode, useEffect, useRef, useState } from "react"
 import { useLenis } from "lenis/react";
-import { Item3D } from "./threeItem/Item3D";
+import { Item3D } from "./components/threeItem/Item3D";
 import { useStore } from "./store/useStore"
 import Lenis from 'lenis'
 import Cards from "./components/card"
@@ -22,7 +22,9 @@ function App() {
             smooth: true,
             mouseMultiplier: 1,
             smoothTouch: false,
-            touchMultiplier: 2,
+            touchMultiplier: 1.5,
+            syncTouch: true, // Synchronise le défilement tactile
+            syncTouchLerp: 0.075, // Ajuste la valeur de lissage pour le tactile
             infinite: false,
         })
 
