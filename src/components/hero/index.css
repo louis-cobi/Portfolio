@@ -1,4 +1,18 @@
 h1 {
     font-size: 20vw;
     text-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+        filter: blur(1.5rem);
+    }
+
+    100% {
+        opacity: 1;
+        filter: blur(0rem);
+    }
 }
