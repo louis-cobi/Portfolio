@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+
 .zen-dots-regular {
   font-family: "Zen Dots", sans-serif;
   font-weight: 400;

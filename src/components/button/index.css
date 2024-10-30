@@ -1,0 +1,54 @@
+.hover-effect-button {
+    position: relative;
+    border: none;
+    background: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    --anim: 0;
+}
+
+.hover-effect {
+    position: relative;
+    white-space: nowrap;
+    font-kerning: none;
+}
+
+.hover-effect--bg {
+    --anim: 0;
+}
+
+.hover-effect--bg::after {
+    content: '';
+    position: absolute;
+    left: -8px;
+    right: -8px;
+    top: -8px;
+    bottom: -8px;
+    background-color: rgba(255, 255, 255, 0.692);
+    mix-blend-mode: var(--blendmode-effect, difference);
+    backdrop-filter: blur(var(--bg-blur, 5px));
+    transform-origin: 0% 50%;
+    transform: scaleX(var(--anim));
+    z-index: -1;
+    border-radius: 2px;
+}
+
+.char {
+    display: inline-block;
+    position: relative;
+    --opa: 0;
+}
+
+.char::after {
+    content: '';
+    width: 1ch;
+    top: 0;
+    left: 0;
+    position: absolute;
+    opacity: var(--opa);
+    background: currentColor;
+    height: 100%;
+}

@@ -8,6 +8,7 @@ import Lenis from 'lenis'
 import Cards from "./components/card"
 import Marquee from "./components/marquee"
 import Hero from "./components/hero"
+import { Button } from "./components/button";
 
 function App() {
     const setLenis = useStore((state) => state.setLenis)
@@ -48,38 +49,22 @@ function App() {
 
     const item = { component: Item3D }
     return (
-        <div className="background">
-
-            <div className="min-h-screen text-white bg-[#0c0c0c] select-none background">
-                <View className="flex z-[1] fixed rounded-t-md h-dvh w-dvw">
-                    <Item3D />
-                </View>
-                <Hero />
-                <div className="container p-5 pb-20 mx-auto ">
-                    <div className="relative mt-5 overflow-hidden">
-                        <div
-                            className="grid h-dvh gap-5 overflow-hidden group grid-clos-1 md:grid-cols-2 lg:grid-cols-4"
-                            data-gird
-                        >
-                            <h1 className="flex ">Work in progress </h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div className="background text-white">
+            <View className="flex z-[-1] fixed rounded-t-md h-dvh w-dvw">
+                <Item3D />
+            </View>
+            <Hero />
+            <Button
+                onClick={() => console.log('clicked')}
+                className="custom-class"
+            >
+                Click Me
+            </Button>
             <Cards />
             <Marquee />
             <Marquee isReversed={true} tool={true} />
-            <div className="relative rounded-md cursor-pointer bg-white/10 card p-[1px]">
-                <View className="flex z-[2] bg-[#171717]  aspect-square  relative rounded-t-md">
-                    <Item3D />
-                    <item.component />
-                </View>
-            </div>
-            <div className="relative rounded-md cursor-pointer bg-white/10 card p-[1px]">
-                <View className="flex z-[2] bg-[#171717]  aspect-square  relative rounded-t-md">
-                    <Item3D />
-                    <item.component />
-                </View>
+            <div className="min-h-screen w-dvw">
+                <p>CONTACT</p>
             </div>
 
             <div className="fixed top-0 left-0 w-dvw h-dvh ">

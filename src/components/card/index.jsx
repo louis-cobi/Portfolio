@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLenis } from "lenis/react";
 import "./index.css"
 import { projects } from "./project";
+import { Button } from '../button'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,7 +42,7 @@ const SingleCard = ({ project }) => {
   }, []);
 
   return (
-    <div ref={cardRef} className="content--sticky card h-[500px] w-[500px] flex flex-col " >
+    <div ref={cardRef} className="content--sticky card h-[70dvh] w-[80dvw] flex flex-col " >
       <div className="tools">
         <div className="circle">
           <span className="red box"></span>
@@ -57,7 +58,9 @@ const SingleCard = ({ project }) => {
         <img src={project.src} alt={project.title} className="content__img" />
         <h2>{project.title}</h2>
         <p>{project.description}</p>
-        <a href={project.link} target="_blank" rel="noopener noreferrer">En savoir plus</a>
+        <Button>
+          <a href={project.link} target="_blank" rel="noopener noreferrer">En savoir plus</a>
+        </Button>
       </div>
     </div>
   );
