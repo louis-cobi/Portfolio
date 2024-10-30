@@ -1,0 +1,50 @@
+.container {
+  --cursor-size: 40px;
+  --cursor-border-width-mobile: calc(2 / 390 * 100vw);
+  --cursor-border-width-desktop: calc(2 / 1440 * 100vw);
+  --cursor-color: #dddddd;
+  --cursor-transition: transform 600ms cubic-bezier(0.19, 1, 0.22, 1);
+
+  position: fixed;
+  inset: 0;
+  height: 100dvh;
+  width: 100dvw;
+  z-index: 10000;
+  pointer-events: none;
+  /* overflow: hidden; */
+
+  @media (hover: none) {
+    display: none;
+  }
+}
+
+.cursor {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  width: var(--cursor-size);
+  height: var(--cursor-size);
+  opacity: 0.4;
+  transition: var(--cursor-transition);
+  border: var(--cursor-border-width-mobile) solid var(--cursor-color);
+
+  @media (min-width: 1024px) {
+    border: var(--cursor-border-width-desktop) solid var(--cursor-color);
+  }
+
+  &.grab {
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+
+  &.pointer {
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+}
+
+/* Style global pour cacher le curseur natif */
+html.has-custom-cursor {
+  &,
+  * {
+    cursor: none !important;
+  }
+} 
