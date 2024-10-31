@@ -34,33 +34,10 @@ html.has-custom-cursor * {
   width: 100%;
   height: 100%;
   /*--color: rgba(114, 114, 114, 0.3);*/
-  --color:  rgba(255, 255, 255, 0.06);
+  --color: rgba(255, 255, 255, 0.06);
   background-color: #0A090C;
   /* background-color: #191a1a; */
   /* background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),
       linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);
   background-size: 55px 55px; */
-}
-
-/* Glowing Cards by Leon van Zyl (https://codepen.io/leonvanzyl/pen/jOKwmEw?editors=0110) */
-.card::before {
-  content: "";
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: opacity 500ms;
-  position: absolute;
-  border-radius: inherit;
-  z-index: 3;
-  top: 0px;
-  left: 0px;
-  background: radial-gradient(
-    800px circle at var(--mouse-x) var(--mouse-y),
-    rgba(255, 255, 255, 0.06),
-    transparent 40%
-  );
-}
-
-.card:hover::before {
-  opacity: 1;
 }

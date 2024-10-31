@@ -8,6 +8,7 @@ import Lenis from 'lenis'
 import Cards from "./components/card"
 import Marquee from "./components/marquee"
 import Hero from "./components/hero"
+import Profil from "./components/profil";
 import { Button } from "./components/button";
 
 function App() {
@@ -54,12 +55,7 @@ function App() {
                 <Item3D />
             </View>
             <Hero />
-            <Button
-                onClick={() => console.log('clicked')}
-                className="custom-class"
-            >
-                Click Me
-            </Button>
+            <Profil />
             <Cards />
             <Marquee />
             <Marquee isReversed={true} tool={true} />
