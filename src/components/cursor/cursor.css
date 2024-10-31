@@ -1,8 +1,8 @@
 .container {
-  --cursor-size: 40px;
+  --cursor-size: 30px;
   --cursor-border-width-mobile: calc(2 / 390 * 100vw);
   --cursor-border-width-desktop: calc(2 / 1440 * 100vw);
-  --cursor-color: #dddddd;
+  --cursor-color: #ffffffef;
   --cursor-transition: transform 600ms cubic-bezier(0.19, 1, 0.22, 1);
 
   position: fixed;
@@ -37,7 +37,7 @@
   }
 
   &.pointer {
-    transform: translate(-50%, -50%) scale(0.5);
+    transform: translate(-50%, -50%) scale(1.5);
   }
 }
 
