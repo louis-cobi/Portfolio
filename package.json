@@ -1,5 +1,5 @@
 {
-  "name": "origami",
+  "name": "portfolio_louis_cobigo",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -16,11 +16,13 @@
     "@studio-freight/lenis": "^1.0.42",
     "@types/three": "^0.166.0",
     "@uidotdev/usehooks": "^2.4.1",
+    "clsx": "^2.1.1",
     "gsap": "^3.12.5",
     "lenis": "^1.1.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-use-refs": "^1.0.1",
+    "split-type": "^0.3.4",
     "tailwind-merge": "^2.5.4",
     "three": "^0.166.1",
     "zustand": "^4.5.5"
