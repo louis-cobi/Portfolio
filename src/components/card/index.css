@@ -1,26 +1,28 @@
-/* From Uiverse.io by EmmaxPlay */
 .card {
     margin: 0 auto;
     background-color: #191a1a;
     border-radius: 8px;
     z-index: 1;
     color: white;
-    top: 10vh;
+    height: 70dvh;
+    width: 80dvw;
+    margin-top: 8dvh;
 }
 
 .tools {
-    display: flex;
-    align-items: center;
     padding: 9px;
+    background-color: inherit;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
 
 .circle {
+    display: inline-flex;
     padding: 0 4px;
 }
 
 .box {
     display: inline-block;
-    align-items: center;
     width: 10px;
     height: 10px;
     padding: 1px;
@@ -40,10 +42,8 @@
 }
 
 .content--sticky {
-	width: 100vw;
-	position: sticky;
-	top: 10dvh;
-	--offset: 10dvh;
-	top: var(--offset);
-	height: calc(100vh - var(--offset));
+    position: sticky;
+    --offset: 10dvh;
+    top: var(--offset);
+    height: calc(100vh - var(--offset));
 }

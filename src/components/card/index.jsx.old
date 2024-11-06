@@ -42,7 +42,7 @@ const SingleCard = ({ project }) => {
   }, []);
 
   return (
-    <div ref={cardRef} className="content--sticky card h-[70dvh] w-[80dvw] flex flex-col " >
+    <div ref={cardRef} className="content--sticky card h-[70dvh] w-[80dvw] mt-[8dvh]" >
       <div className="tools">
         <div className="circle">
           <span className="red box"></span>
@@ -54,13 +54,19 @@ const SingleCard = ({ project }) => {
           <span className="green box"></span>
         </div>
       </div>
-      <div className="card__content">
-        <img src={project.src} alt={project.title} className="content__img" />
-        <h2>{project.title}</h2>
-        <p>{project.description}</p>
-        <Button>
-          <a href={project.link} target="_blank" rel="noopener noreferrer">En savoir plus</a>
-        </Button>
+      <div className="card__content  flex flex-col md:flex-row ">
+        <div className="grid md:grid-col-2 md:flex-row-reverse">
+          <div className="md:w-1/2 flex-shrink-0 md:col-span-1">
+            <div className="absolute inset-0 bg-contain bg-no-repeat bg-center w-[40dvw] h-[40dvh] md:w-[40dvw] md:h-[40dvh]" style={{ backgroundImage: `url(${project.src})` }}></div>
+          </div>
+          <div className="md:w-1/2 p-8 flex flex-col justify-center md:col-span-1">
+            <h2 className="text-2xl font-bold mb-4">{project.title}</h2>
+            <p className="text-gray-700 mb-6">{project.description}</p>
+            <Button>
+              <a href={project.link} target="_blank" rel="noopener noreferrer">En savoir plus</a>
+            </Button>
+          </div>
+        </div>
       </div>
     </div>
   );

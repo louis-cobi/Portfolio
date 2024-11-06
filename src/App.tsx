@@ -5,6 +5,7 @@ import { useLenis } from "lenis/react";
 import { Item3D } from "./components/threeItem/Item3D";
 import { useStore } from "./store/useStore"
 import Lenis from 'lenis'
+// import Cards from "./components/card/index.jsx"
 import Cards from "./components/card"
 import Marquee from "./components/marquee"
 import Hero from "./components/hero"
