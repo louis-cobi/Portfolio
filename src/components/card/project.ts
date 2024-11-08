@@ -1,4 +1,11 @@
-export const projects = [
+export interface Project {
+    src: string;
+    title: string;
+    description: string;
+    link: string;
+  }
+
+export const projects: Project[] = [
     {
       title: "Matthias Leidinger",
       description: "Originally hailing from Austria, Berlin-based photographer Matthias Leindinger is a young creative brimming with talent and ideas.",

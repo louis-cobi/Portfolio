@@ -4,8 +4,8 @@
     border-radius: 8px;
     z-index: 1;
     color: white;
-    height: 70dvh;
-    width: 80dvw;
+    /* height: 70dvh;
+    width: 80dvw; */
     margin-top: 8dvh;
 }
 
@@ -46,4 +46,23 @@
     --offset: 10dvh;
     top: var(--offset);
     height: calc(100vh - var(--offset));
+}
+
+.card__content{
+    height: 90%;
+}
+
+.project__img{
+    width: 75dvw;
+    height: 20dvh;
+}
+
+@media (min-width: 1024px) {
+    .card{
+        width: 65dvw !important;
+    }
+    .project__img{
+        width: 28dvw;
+        height: 40dvh;
+    }
 }
