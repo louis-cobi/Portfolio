@@ -1,27 +1,27 @@
-import { View } from "@react-three/drei"
-import { Canvas } from "@react-three/fiber"
-import { ReactNode, useEffect, useRef, useState } from "react"
+import { View } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { useLenis } from "lenis/react";
 import { Item3D } from "./components/threeItem/Item3D";
-import { useStore } from "./store/useStore"
-import Lenis from 'lenis'
-// import Cards from "./components/card/index.jsx"
-import Cards from "./components/card"
-import Marquee from "./components/marquee"
-import Hero from "./components/hero"
+import { useStore } from "./store/useStore";
+import Lenis from "lenis";
+import Cards from "./components/card";
+import { IconMarquee, IconMarqueeReversed } from "./components/marquee";
+import Hero from "./components/hero";
 import Profil from "./components/profil";
 import { Button } from "./components/button";
+import Terminal from "./components/terminal";
 
 function App() {
-    const setLenis = useStore((state) => state.setLenis)
-    const [scrollY, setScrollY] = useState(0)
+    const setLenis = useStore((state) => state.setLenis);
+    const [scrollY, setScrollY] = useState(0);
 
     useEffect(() => {
         const lenisInstance = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: 'vertical',
-            gestureDirection: 'vertical',
+            direction: "vertical",
+            gestureDirection: "vertical",
             smooth: true,
             mouseMultiplier: 1,
             smoothTouch: false,
@@ -29,27 +29,30 @@ function App() {
             syncTouch: true, // Synchronise le défilement tactile
             syncTouchLerp: 0.075, // Ajuste la valeur de lissage pour le tactile
             infinite: false,
-        })
-
-        setLenis(lenisInstance)
-
-        function raf(time: number) {
-            lenisInstance.raf(time)
-            requestAnimationFrame(raf)
-        }
-
-        requestAnimationFrame(raf)
-
-        lenisInstance.on('scroll', ({ scroll, limit, velocity, direction, progress }) => {
-            setScrollY(scroll);
         });
 
-        return () => {
-            lenisInstance.destroy()
-        }
-    }, [setLenis])
+        setLenis(lenisInstance);
 
-    const item = { component: Item3D }
+        function raf(time: number) {
+            lenisInstance.raf(time);
+            requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+
+        lenisInstance.on(
+            "scroll",
+            ({ scroll, limit, velocity, direction, progress }) => {
+                setScrollY(scroll);
+            }
+        );
+
+        return () => {
+            lenisInstance.destroy();
+        };
+    }, [setLenis]);
+
+    const item = { component: Item3D };
     return (
         <div className="background text-white">
             <View className="flex z-[-1] fixed rounded-t-md h-dvh w-dvw">
@@ -58,8 +61,11 @@ function App() {
             <Hero />
             <Profil />
             <Cards />
-            <Marquee />
-            <Marquee isReversed={true} tool={true} />
+            <div className="mt-[25dvh] mb-[25dvh]">
+                <IconMarquee />
+                <IconMarqueeReversed />
+            </div>
+            <Terminal />
             <div className="min-h-screen w-dvw">
                 <p>CONTACT</p>
             </div>
@@ -70,13 +76,12 @@ function App() {
                         zoom: 1,
                     }}
                     className="fixed"
-                    eventSource={document.getElementById("root")!}
-                >
+                    eventSource={document.getElementById("root")!}>
                     <View.Port />
                 </Canvas>
             </div>
         </div>
-    )
+    );
 }
 
-export default App
+export default App;
