@@ -69,7 +69,7 @@ const SingleCard = ({ project }: { project: Project }) => {
                         <div className="project__img__container flex items-center justify-center ">
                             <img
                                 src={project.src}
-                                className="project__img rounded-md border-2 border-black border-solid "
+                                className="project__img"
                             />
                         </div>
                     </div>
