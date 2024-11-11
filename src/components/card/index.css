@@ -48,20 +48,35 @@
     height: calc(100vh - var(--offset));
 }
 
-.card__content{
+.card__content {
     height: 90%;
 }
 
-.project__img{
+.project__img__container {
     width: 75dvw;
     height: 20dvh;
 }
 
+.project__img {
+    width: 100%;
+    height: -webkit-fill-available;
+    max-width: max-content;
+    max-height: min-content;
+    border-radius: 0.5rem;
+    box-shadow: 0px 8px 10px #000000;
+}
+
+.project__description {
+    max-height: 26dvh;
+    overflow: auto;
+    color: rgb(255 255 255 / 75%);
+}
+
 @media (min-width: 1024px) {
-    .card{
+    .card {
         width: 65dvw !important;
     }
-    .project__img{
+    .project__img__container {
         width: 28dvw;
         height: 40dvh;
     }

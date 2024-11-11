@@ -66,27 +66,31 @@ const SingleCard = ({ project }: { project: Project }) => {
             <div className="card__content  flex flex-col lg:flex-row">
                 <div className="flex flex-col lg:flex-row-reverse lg:flex-row items-center h-full">
                     <div className="lg:w-1/2 flex-shrink-0 lg:col-span-1 flex justify-center">
-                        <div
-                            className="project__img inset-0 bg-contain bg-no-repeat bg-center"
-                            style={{
-                                backgroundImage: `url(${project.src})`,
-                            }}></div>
+                        <div className="project__img__container flex items-center justify-center ">
+                            <img
+                                src={project.src}
+                                className="project__img rounded-md border-2 border-black border-solid "
+                            />
+                        </div>
                     </div>
                     <div className="lg:w-1/2 p-8 grid content-evenly h-full items-center lg:col-span-1 ">
                         <h2 className="text-2xl font-bold mb-4 place-self-start">
                             {project.title}
                         </h2>
-                        <p className="text-gray-700 mb-6 grow ">
+                        <p className="mb-6 grow project__description">
                             {project.description}
                         </p>
-                        <Button>
-                            <a
-                                href={project.link}
-                                target="_blank"
-                                rel="noopener noreferrer">
-                                En savoir plus
-                            </a>
-                        </Button>
+                        <div className="flex items-start items-center">
+                            <p>{`>`}</p>
+                            <Button>
+                                <a
+                                    href={project.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                    En savoir plus
+                                </a>
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </div>
