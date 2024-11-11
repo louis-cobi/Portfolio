@@ -14,14 +14,15 @@ const SingleCard = ({ project }: { project: Project }) => {
     useEffect(() => {
         const el = cardRef.current;
 
-        gsap.timeline({
+        const timeline = gsap.timeline({
             scrollTrigger: {
                 trigger: el,
                 start: "center center",
                 end: "max",
                 scrub: true,
             },
-        })
+        });
+        timeline
             .to(
                 el,
                 {
@@ -46,6 +47,14 @@ const SingleCard = ({ project }: { project: Project }) => {
                 },
                 0
             );
+
+        return () => {
+            // Tuez toutes les animations GSAP et ScrollTriggers associés à cet élément
+            if (timeline.scrollTrigger) {
+                timeline.scrollTrigger.kill();
+            }
+            timeline.kill();
+        };
     }, []);
 
     return (
@@ -67,10 +76,7 @@ const SingleCard = ({ project }: { project: Project }) => {
                 <div className="flex flex-col lg:flex-row-reverse lg:flex-row items-center h-full">
                     <div className="lg:w-1/2 flex-shrink-0 lg:col-span-1 flex justify-center">
                         <div className="project__img__container flex items-center justify-center ">
-                            <img
-                                src={project.src}
-                                className="project__img"
-                            />
+                            <img src={project.src} className="project__img" />
                         </div>
                     </div>
                     <div className="lg:w-1/2 p-8 grid content-evenly h-full items-center lg:col-span-1 ">
@@ -113,18 +119,25 @@ const Cards = () => {
             lenis.options.lerp = 0.2;
             lenis.options.smoothWheel = true;
 
-            lenis.on("scroll", ScrollTrigger.update);
+            const scrollTriggerUpdate = () => ScrollTrigger.update();
+            lenis.on("scroll", scrollTriggerUpdate);
 
             const scrollFn = (time) => {
                 lenis.raf(time);
                 requestAnimationFrame(scrollFn);
             };
+            const rafId = requestAnimationFrame(scrollFn);
+
             requestAnimationFrame(scrollFn);
 
             // Restaurez la valeur originale de lerp lorsque le composant est démonté
             return () => {
                 lenis.options.lerp = originalLerp.current;
                 lenis.options.smoothWheel = originalSmoothWheel.current;
+                lenis.off("scroll", scrollTriggerUpdate);
+                cancelAnimationFrame(rafId);
+                // Nettoyer tous les ScrollTriggers
+                ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
             };
         }
     }, [lenis]);

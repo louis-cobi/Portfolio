@@ -29,6 +29,9 @@ function App() {
             syncTouch: true, // Synchronise le défilement tactile
             syncTouchLerp: 0.075, // Ajuste la valeur de lissage pour le tactile
             infinite: false,
+            lerp: 0.07,
+            wheelBoundary: 0,
+            bounceMultiplier: 0, 
         });
 
         setLenis(lenisInstance);
@@ -43,7 +46,7 @@ function App() {
         lenisInstance.on(
             "scroll",
             ({ scroll, limit, velocity, direction, progress }) => {
-                setScrollY(scroll);
+                setScrollY(Math.round(scroll));
             }
         );
 
@@ -66,7 +69,7 @@ function App() {
                 <IconMarqueeReversed />
             </div>
             <Terminal />
-            <div className="min-h-screen w-dvw">
+            <div className=" w-dvw">
                 <p>CONTACT</p>
             </div>
 
