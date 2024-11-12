@@ -1,7 +1,6 @@
 import { View } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { ReactNode, useEffect, useRef, useState } from "react";
-import { useLenis } from "lenis/react";
+import { useEffect, useState } from "react";
 import { Item3D } from "./components/threeItem/Item3D";
 import { useStore } from "./store/useStore";
 import Lenis from "lenis";
@@ -9,7 +8,6 @@ import Cards from "./components/card";
 import { IconMarquee, IconMarqueeReversed } from "./components/marquee";
 import Hero from "./components/hero";
 import Profil from "./components/profil";
-import { Button } from "./components/button";
 import Terminal from "./components/terminal";
 import Loading from "./components/loading";
 
