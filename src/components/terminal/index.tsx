@@ -12,7 +12,7 @@ const Terminal = () => {
                         <div className="w-3 h-3 rounded-full bg-yellow-500" />
                         <div className="w-3 h-3 rounded-full bg-green-500" />
                     </div>
-                    <p className="text-sm">bash</p>
+                    <p className="text-sm">{`>_`}</p>
                 </div>
                 <div className="mt-4">
                     <p className="text-green-400">$ npm install louis-cobigo</p>
