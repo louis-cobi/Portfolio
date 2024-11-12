@@ -10,36 +10,40 @@ import Hero from "./components/hero";
 import Profil from "./components/profil";
 import Terminal from "./components/terminal";
 import Loading from "./components/loading";
+import { Cursor } from "./components/cursor/index.tsx";
 
 const MainContent = () => {
     return (
-        <div className="background text-white">
-            <View className="flex z-[-1] fixed rounded-t-md h-dvh w-dvw">
-                <Item3D />
-            </View>
-            <Hero />
-            <Profil />
-            <Cards />
-            <div className="mt-[25dvh] mb-[25dvh]">
-                <IconMarquee />
-                <IconMarqueeReversed />
-            </div>
-            <Terminal />
-            <div className=" w-dvw">
-                <p>CONTACT</p>
-            </div>
+        <>
+            <Cursor />
+            <div className="background text-white">
+                <View className="flex z-[-1] fixed rounded-t-md h-dvh w-dvw">
+                    <Item3D />
+                </View>
+                <Hero />
+                <Profil />
+                <Cards />
+                <div className="mt-[25dvh] mb-[25dvh]">
+                    <IconMarquee />
+                    <IconMarqueeReversed />
+                </div>
+                <Terminal />
+                <div className=" w-dvw">
+                    <p>CONTACT</p>
+                </div>
 
-            <div className="fixed top-0 left-0 w-dvw h-dvh ">
-                <Canvas
-                    camera={{
-                        zoom: 1,
-                    }}
-                    className="fixed"
-                    eventSource={document.getElementById("root")!}>
-                    <View.Port />
-                </Canvas>
+                <div className="fixed top-0 left-0 w-dvw h-dvh ">
+                    <Canvas
+                        camera={{
+                            zoom: 1,
+                        }}
+                        className="fixed"
+                        eventSource={document.getElementById("root")!}>
+                        <View.Port />
+                    </Canvas>
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 

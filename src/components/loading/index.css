@@ -1,14 +1,14 @@
 .loading-screen {
-    background-color: #0A090C;
+    background-color: #0a090c;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     width: 100vw;
-  }
-  
-  .loading-text {
+}
+
+.loading-text {
     color: #ffffff;
     font-size: 2rem;
-  }
-  
+    letter-spacing: 5px;
+}
