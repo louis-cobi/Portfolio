@@ -9,7 +9,7 @@ import { Button } from "../button";
 gsap.registerPlugin(ScrollTrigger);
 
 const SingleCard = ({ project }: { project: Project }) => {
-    const cardRef = useRef(null);
+    const cardRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const el = cardRef.current;
@@ -22,6 +22,7 @@ const SingleCard = ({ project }: { project: Project }) => {
                 scrub: true,
             },
         });
+
         timeline
             .to(
                 el,
@@ -29,12 +30,6 @@ const SingleCard = ({ project }: { project: Project }) => {
                     ease: "none",
                     startAt: { filter: "blur(0px)" },
                     filter: "blur(3px)",
-                    scrollTrigger: {
-                        trigger: el,
-                        start: "center center",
-                        end: "+=100%",
-                        scrub: true,
-                    },
                 },
                 0
             )
@@ -49,7 +44,6 @@ const SingleCard = ({ project }: { project: Project }) => {
             );
 
         return () => {
-            // Tuez toutes les animations GSAP et ScrollTriggers associés à cet élément
             if (timeline.scrollTrigger) {
                 timeline.scrollTrigger.kill();
             }
@@ -72,7 +66,7 @@ const SingleCard = ({ project }: { project: Project }) => {
                     <span className="green box"></span>
                 </div>
             </div>
-            <div className="card__content  flex flex-col lg:flex-row">
+            <div className="card__content flex flex-col lg:flex-row">
                 <div className="flex flex-col lg:flex-row-reverse lg:flex-row items-center h-full">
                     <div className="lg:w-1/2 flex-shrink-0 lg:col-span-1 flex justify-center">
                         <div className="project__img__container flex items-center justify-center ">
@@ -106,38 +100,33 @@ const SingleCard = ({ project }: { project: Project }) => {
 
 const Cards = () => {
     const lenis = useLenis();
-    const originalLerp = useRef(null);
-    const originalSmoothWheel = useRef(null);
+    const scrollSyncRef = useRef(false); // Flag pour éviter les double appels initiaux.
 
     useEffect(() => {
         if (lenis) {
-            // Sauvegardez la valeur originale de lerp
-            originalLerp.current = lenis.options.lerp;
-            originalSmoothWheel.current = lenis.options.smoothWheel;
-
-            // Modifiez la valeur de lerp pour ce composant
-            lenis.options.lerp = 0.2;
-            lenis.options.smoothWheel = true;
-
-            const scrollTriggerUpdate = () => ScrollTrigger.update();
-            lenis.on("scroll", scrollTriggerUpdate);
+            lenis.on("scroll", ScrollTrigger.update);
 
             const scrollFn = (time) => {
                 lenis.raf(time);
                 requestAnimationFrame(scrollFn);
             };
+
+            // Synchroniser GSAP et Lenis après un court délai
+            const initSync = () => {
+                if (!scrollSyncRef.current) {
+                    ScrollTrigger.refresh(true); // Force la mise à jour complète
+                    scrollSyncRef.current = true;
+                }
+            };
+
+            setTimeout(initSync, 100);
+
             const rafId = requestAnimationFrame(scrollFn);
 
-            requestAnimationFrame(scrollFn);
-
-            // Restaurez la valeur originale de lerp lorsque le composant est démonté
             return () => {
-                lenis.options.lerp = originalLerp.current;
-                lenis.options.smoothWheel = originalSmoothWheel.current;
-                lenis.off("scroll", scrollTriggerUpdate);
                 cancelAnimationFrame(rafId);
-                // Nettoyer tous les ScrollTriggers
                 ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+                lenis.off("scroll", ScrollTrigger.update);
             };
         }
     }, [lenis]);
@@ -156,6 +145,7 @@ const Cards = () => {
                 })
             );
             document.body.classList.remove("loading");
+            ScrollTrigger.refresh();
         };
 
         preloadImages();

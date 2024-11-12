@@ -29,7 +29,8 @@ function App() {
             syncTouch: true, // Synchronise le défilement tactile
             syncTouchLerp: 0.075, // Ajuste la valeur de lissage pour le tactile
             infinite: false,
-            lerp: 0.07,
+            smoothWheel: true,
+            lerp: 0.2,
             wheelBoundary: 0,
             bounceMultiplier: 0, 
         });
