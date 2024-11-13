@@ -80,6 +80,7 @@ const SingleCard = ({ project }: { project: Project }) => {
                         <p className="mb-6 grow project__description">
                             {project.description}
                         </p>
+                        <div className="inline-flex">{project.techno.map((techno => <div className="ml-1">{techno}</div>))}</div>
                         <div className="flex items-start items-center">
                             <p>{`>`}</p>
                             <Button>
