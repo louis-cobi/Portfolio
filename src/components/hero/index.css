@@ -1,4 +1,4 @@
-h1 {
+.hero__text {
     font-size: 20vw;
     text-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     animation: fadeInAnimation ease 3s;
