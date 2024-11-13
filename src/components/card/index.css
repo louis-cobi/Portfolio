@@ -66,7 +66,7 @@
 }
 
 .project__description {
-    max-height: 26dvh;
+    max-height: 24dvh;
     overflow: auto;
     color: rgb(255 255 255 / 75%);
 }
@@ -78,5 +78,11 @@
     .project__img__container {
         width: 28dvw;
         height: 40dvh;
+    }
+
+    .project__description {
+        max-height: 40dvh;
+        overflow: auto;
+        color: rgb(255 255 255 / 75%);
     }
 }

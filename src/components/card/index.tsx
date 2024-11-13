@@ -73,14 +73,22 @@ const SingleCard = ({ project }: { project: Project }) => {
                             <img src={project.src} className="project__img" />
                         </div>
                     </div>
-                    <div className="lg:w-1/2 p-8 grid content-evenly h-full items-center lg:col-span-1 ">
-                        <h2 className="text-2xl font-bold mb-4 place-self-start">
-                            {project.title}
-                        </h2>
-                        <p className="mb-6 grow project__description">
+                    <div className="lg:w-1/2 p-8 grid content-evenly items-center lg:col-span-1 ">
+                        <div>
+                            <h2 className="text-2xl font-bold lg:mb-4 place-self-start">
+                                {project.title}
+                            </h2>
+                            <div className="inline-flex italic text-xs text-gray-500">
+                                {project.techno.map((techno, key) => (
+                                    <h3 className="m-1" key={key}>
+                                        {techno}
+                                    </h3>
+                                ))}
+                            </div>
+                        </div>
+                        <p className="mt-1 mb-6 grow project__description">
                             {project.description}
                         </p>
-                        <div className="inline-flex">{project.techno.map((techno => <div className="ml-1">{techno}</div>))}</div>
                         <div className="flex items-start items-center">
                             <p>{`>`}</p>
                             <Button>
