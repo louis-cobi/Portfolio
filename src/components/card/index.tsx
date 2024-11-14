@@ -115,7 +115,7 @@ const Cards = () => {
         if (lenis) {
             lenis.on("scroll", ScrollTrigger.update);
 
-            const scrollFn = (time) => {
+            const scrollFn = (time: number) => {
                 lenis.raf(time);
                 requestAnimationFrame(scrollFn);
             };

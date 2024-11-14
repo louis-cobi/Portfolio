@@ -4,13 +4,13 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import './cursor.css'
 
 const Cursor = () => {
-  const cursor = useRef()
+  const cursor = useRef<HTMLDivElement | null>(null)
   const [isGrab, setIsGrab] = useState(false)
   const [isPointer, setIsPointer] = useState(false)
   const [hasMoved, setHasMoved] = useState(false)
 
   const onMouseMove = useCallback(
-    ({ clientX, clientY }) => {
+    ({ clientX, clientY }: MouseEvent) => {
       gsap.to(cursor.current, {
         x: clientX,
         y: clientY,

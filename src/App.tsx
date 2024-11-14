@@ -57,19 +57,19 @@ function App() {
         const lenisInstance = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: "vertical",
-            gestureDirection: "vertical",
-            smooth: true,
-            mouseMultiplier: 1,
-            smoothTouch: false,
+            // direction: "vertical",
+            // gestureDirection: "vertical",
+            // smooth: true,
+            // mouseMultiplier: 1,
+            // smoothTouch: false,
             touchMultiplier: 1.5,
             syncTouch: true, // Synchronise le défilement tactile
             syncTouchLerp: 0.075, // Ajuste la valeur de lissage pour le tactile
             infinite: false,
             smoothWheel: true,
             lerp: 0.2,
-            wheelBoundary: 0,
-            bounceMultiplier: 0,
+            // wheelBoundary: 0,
+            // bounceMultiplier: 0,
         });
 
         setLenis(lenisInstance);
@@ -83,8 +83,8 @@ function App() {
 
         lenisInstance.on(
             "scroll",
-            ({ scroll, limit, velocity, direction, progress }) => {
-                setScrollY(Math.round(scroll));
+            (event: { scroll: number; limit: number; velocity: number; direction: string; progress: number }) => {
+                setScrollY(Math.round(event.scroll));
             }
         );
 
