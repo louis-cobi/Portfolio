@@ -28,7 +28,7 @@ const MainContent = () => {
                     <IconMarquee />
                     <IconMarqueeReversed />
                 </div>
-                <Terminal className="mb-[10dvh] lg:mb-[5dvh]" />
+                <Terminal />
                 <Footer />
 
                 <div className="fixed top-0 left-0 w-dvw h-dvh ">
