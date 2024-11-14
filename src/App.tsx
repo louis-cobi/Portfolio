@@ -52,7 +52,7 @@ function App() {
     const [scrollY, setScrollY] = useState(0);
 
     useEffect(() => {
-        const timer = setTimeout(() => setIsLoading(false), 3000);
+        const timer = setTimeout(() => setIsLoading(false), 2000);
 
         const lenisInstance = new Lenis({
             duration: 1.2,
