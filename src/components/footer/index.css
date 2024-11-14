@@ -1,0 +1,20 @@
+.contact__title {
+    border-bottom: white solid 2px;
+    padding: 2dvw;
+    font-weight: 700;
+}
+
+.contact__email {
+    margin: 1.25rem;
+    font-size: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+    .contact__title {
+        width: 25dvw;
+    }
+
+    .contact__email{
+        width: fit-content;
+    }
+}

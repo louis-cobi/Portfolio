@@ -2,7 +2,7 @@ import { Button } from "../button";
 
 const Terminal = () => {
     return (
-        <div className="flex items-center justify-center h-[75dvh] w-screen relative z-[10]">
+        <div className="flex items-center justify-center h-[75dvh] w-screen relative z-[10] mb-[5dvh]">
             <div
                 className="text-white p-6 rounded-lg w-[80dvw] lg:max-w-md font-mono"
                 style={{ backgroundColor: "rgb(0 0 0 / 90%)", boxShadow:" 0px 8px 10px #000000" }}>

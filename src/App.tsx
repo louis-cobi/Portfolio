@@ -9,6 +9,7 @@ import { IconMarquee, IconMarqueeReversed } from "./components/marquee";
 import Hero from "./components/hero";
 import Profil from "./components/profil";
 import Terminal from "./components/terminal";
+import Footer from "./components/footer/index.tsx";
 import Loading from "./components/loading";
 import { Cursor } from "./components/cursor/index.tsx";
 
@@ -27,10 +28,8 @@ const MainContent = () => {
                     <IconMarquee />
                     <IconMarqueeReversed />
                 </div>
-                <Terminal />
-                <div className=" w-dvw">
-                    <p>CONTACT</p>
-                </div>
+                <Terminal className="mb-[10dvh] lg:mb-[5dvh]" />
+                <Footer />
 
                 <div className="fixed top-0 left-0 w-dvw h-dvh ">
                     <Canvas
