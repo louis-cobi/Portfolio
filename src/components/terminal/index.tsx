@@ -5,7 +5,10 @@ const Terminal = () => {
         <div className="flex items-center justify-center h-[75dvh] w-screen relative z-[10] mb-[5dvh]">
             <div
                 className="text-white p-6 rounded-lg w-[80dvw] lg:max-w-md font-mono"
-                style={{ backgroundColor: "rgb(0 0 0 / 90%)", boxShadow:" 0px 8px 10px #000000" }}>
+                style={{
+                    backgroundColor: "rgb(0 0 0 / 90%)",
+                    boxShadow: " 0px 8px 10px #000000",
+                }}>
                 <div className="flex justify-between items-center">
                     <div className="flex space-x-2 text-red-500">
                         <div className="w-3 h-3 rounded-full bg-red-500" />
@@ -22,7 +25,12 @@ const Terminal = () => {
                     </p>
                     <div className="flex items-center">
                         <p className="text-green-400">$</p>
-                        <Button>Click to download CV</Button>
+                        <Button
+                            onClick={() =>
+                                window.open(`/Louis_Cobigo_CV.pdf`, "_blank")
+                            }>
+                            Click to download CV
+                        </Button>
                     </div>
                 </div>
             </div>

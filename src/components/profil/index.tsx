@@ -27,7 +27,7 @@ const Profil = () => {
                     <div>
                         {`>`}
                         <Button
-                            onClick={() => console.log("clicked")}
+                            onClick={() => window.open(`/Louis_Cobigo_CV.pdf`, '_blank')}
                             className="custom-class">
                             <a href="">Télécharger mon CV</a>
                         </Button>
