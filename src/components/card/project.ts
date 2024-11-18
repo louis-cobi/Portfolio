@@ -21,7 +21,7 @@ export const projects: Project[] = [
         description:
             "Projet open source développé en partenariat avec Vana Principia, offrant une interface 3D immersive pour visualiser des terrains et des plantes à partir de données fournies. Il permet d'explorer différents types de végétation et leur disposition sur des terrains spécifiques, avec des données détaillées sur chaque plante.",
         src: "/candide.gif",
-        link: "/https://github.com/louis-cobi/candide",
+        link: "https://github.com/louis-cobi/candide",
     },
     {
         title: "TensorFlow Experimentation",
